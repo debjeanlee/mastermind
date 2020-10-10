@@ -94,3 +94,26 @@ header {
     border-radius: 50%;
     margin: 1px auto;
 }
+#s_red {
+    background-color: red;
+}
+
+#s_blue {
+    background-color: blue;
+}
+
+#s_green {
+    background-color: greenyellow;
+}
+
+#s_yellow {
+    background-color: yellow;
+}
+
+#s_orange {
+    background-color: orange;
+}
+
+#s_purple {
+    background-color: purple;
+}
