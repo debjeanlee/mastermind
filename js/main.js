@@ -32,53 +32,44 @@ function changePinColor(pinNum, colorInd, id) {
 
 setAnswer();
 
-// // // function to get guess
+// // // function to select pin color guess
 $(".selector_pin").click(function() {
     let id = $(this).attr("id");
     if (guess.length < 4) {
         colorClicked(id);
         let pinNum = guess.length;
-        let color = answerChoices.indexOf(guess[guess.length - 1]);
+        let color = guess[guess.length - 1];
         changePinColor(pinNum, color, "#guess");
-        // console.log(color);
-    } else {
-        console.log("too long nigga")
+        // console.log(guess);
     }
 });
 
-// changePinColor(1,1,"#guess");
 
 // // // function to add clicked color to guess arr
 function colorClicked(id) {
     switch (id) {
         case "s_red":
-            guess.push("red");
+            guess.push(0);
             break;
         case "s_blue":
-            guess.push("blue");
+            guess.push(1);
             break;
         case "s_green":
-            guess.push("green");
+            guess.push(2);
             break;
         case "s_yellow":
-            guess.push("yellow");
+            guess.push(3);
             break;
         case "s_purple":
-            guess.push("purple");
+            guess.push(4);
             break;
         case "s_orange":
-            guess.push("orange");
+            guess.push(5);
             break;
     }
 }
 
-// let s = document.getElementById("s_orange").style.backgroundColor;
-// console.log(s == "");
 
-// console.log(colorClicked("s_red"));
+// // // function to check for win
 
-
-// // // function to show guess results
-// function guessResults(round, guess) {
-    
-// }
+console.log(answer);
