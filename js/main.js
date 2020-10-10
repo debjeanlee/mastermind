@@ -11,20 +11,21 @@ function setAnswer() {
         // console.log(answer);
     }
 
-    // answer.forEach(el => {
-
-    // })
+    answer.forEach((el, i) => {
+        changePinColor(i+1, el, "#answer")
+    })
 }
 
 // console.log(document.querySelector("#answer div:nth-child(2)"));
 
-function changePinColour(pinNum, colorInd, id) {
+// changes individual pin color with pin number, color index and selector
+function changePinColor(pinNum, colorInd, id) {
     let pin = document.querySelector(`${id} div:nth-child(${pinNum})`);
     pin.style.backgroundColor = answerChoices[colorInd];
     console.log(pin);
 }
 
-// changePinColour(1, 1, "#answer");
+// changePinColor(1, 1, "#answer");
 
 setAnswer();
 
