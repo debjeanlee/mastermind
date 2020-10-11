@@ -52,6 +52,12 @@ h4 {
     display: flex;
 }
 
+.feedback_container {
+    color: red;
+    padding: 20px;
+    margin: 5px;
+}
+
 .board {
     border: 5px solid #D7B791;
     border-radius: 20px;
