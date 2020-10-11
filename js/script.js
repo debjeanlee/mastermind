@@ -3,6 +3,8 @@ let answerChoices = ["red", "blue", "green", "yellow", "purple", "orange"];
 let answer = [];
 let guess = [];
 let results =[];
+let round = 1;
+let feedback = $(".feedback_container");
 
 
 // // // sets random answer chosen by computer
@@ -18,34 +20,29 @@ function setAnswer() {
     })
 }
 
-
-// console.log(document.querySelector("#answer div:nth-child(2)"));
-
 // // //changes individual pin color with pin number, color index and selector
 function changePinColor(pinNum, colorInd, id) {
     let pin = document.querySelector(`${id} div:nth-child(${pinNum})`);
     switch (answerChoices[colorInd]) {
         case "red":
-            pin.style.backgroundColor = "#faadbb";
+            pin.style.backgroundColor = "#ff8097";
             break;
         case "orange":
-            pin.style.backgroundColor = "#ffc59e";
+            pin.style.backgroundColor = "#ffa66b";
             break;
         case "yellow":
-            pin.style.backgroundColor = "#f6e9b3";
+            pin.style.backgroundColor = "#ffe992";
             break;
         case "blue":
-            pin.style.backgroundColor = "#abdde6";
+            pin.style.backgroundColor = "#92d6e2";
             break;
         case "green":
-            pin.style.backgroundColor = "#b2ecad";
+            pin.style.backgroundColor = "#9fec98";
             break;
         case "purple":
-            pin.style.backgroundColor = "#b4a1e2";
+            pin.style.backgroundColor = "#a38add";
             break;
     }
-    // pin.style.backgroundColor = answerChoices[colorInd];
-    // console.log(pin);
 }
 
 // changePinColor(1, 1, "#answer");
@@ -89,22 +86,58 @@ function colorClicked(id) {
     }
 }
 
-let feedback = $(".feedback_container");
-// feedback.text("YOU WIN A BAGEL");
-// console.log(feedback);
-
-
 // // // function to check for win
 function checkWin() {
     if (answer.length == guess.length) {
         answer.forEach((el, i) => {
             if (el == guess[i]) {
-                feedback.text("You win A BAHGAL");
+                changeRoundPins();
+                feedback.text("Winner Winner Chicken Eats Dinner");
+            } else {
+                feedback.text("Try again sucker");
+                changeRoundPins();
+                guess = [];
+                changeBackToBlack();
             }
         })
+        round++;
+    } else {
+        console.log(guess.length);
+        feedback.text("Not enough pins chosen moron");
     }
 }
 
+// NEED FUNCTION TO CHANGE COLORS OF PINS ON BOARDS
+function changeRoundPins () {
+    guess.forEach((el, i) => {
+        let id = "#guess"+round;
+        let pinBgCheck = $("#b"+round);
+        if (pinBgCheck.css("background-color") == "rgb(207, 187, 165)") {
+            guess.forEach((el, i) => {
+                changePinColor(i+1, el, id);
+            })
+    }
+})
+}
+
+function changeBackToBlack() {
+    for (let x = 1; x < 5; x++) {
+        let pin = $(`#guess div:nth-child(${x})`);
+        pin.css("background-color","rgb(207, 187, 165)");
+    }
+}
+
+
+$("#check").click(function() {
+    checkWin();
+})
+
+// changeRoundPins();
+
+
+// NEED FUNCTION TO CHECK IF PINS ON BOARDS ARE COLOURED
+
+
 // console.log(checkWin());
 
-console.log(answer);
+// console.log(answer);
