@@ -132,38 +132,42 @@ $("#check").click(function() {
     checkWin();
 })
 
-let totallyCorrect = 0;
-let indexOfCorrect = [];
-let wrongPlace = 0;
+
 
 // function to assign result pins
 function showGuessResults() {
+    let black = 0;
+    let white = 0;
+    let wrong = 0;
+    let indexOfCorrect = [];
     let x = Array.from(answer);
     let y = Array.from(guess);
-    let compCorrect = 0;
-    let placeWrong = 0;
-    let wrong = 0;
-    x.forEach((el, i) => {
-        if (el == y[i]) {
-            console.log("before" + x + y);
-            x.splice(i,1);
-            y.splice(i,1);
-            console.log("after trimming: " + x + y);
-            compCorrect++;
-        } else {
-            y.forEach((el1, i1) => {
-                if (el == el1) {
-                    x.splice(i,1);
-                    y.splice(i1, 1);
-                    placeWrong++;
-                } else {
-                    wrong++;
-                }
-            })
+
+    y.forEach((el, i) => {
+        if (el == x[i]) {
+            black++;
+            indexOfCorrect.push(i);
         }
-    })
-    console.log(x, y);
-    console.log(compCorrect, placeWrong);
+    });
+    // console.log(indexOfCorrect);
+
+    indexOfCorrect.reverse();
+    indexOfCorrect.forEach(el => {
+        x.splice(el,1);
+        y.splice(el,1);
+    });
+    // console.log(x, y);
+
+    x.forEach((el, i) => {
+        if (y.includes(el)) {
+            white++;
+            y.splice(y.indexOf(el), 1);
+            x.splice(i,1);
+        } else {
+            wrong++;
+        }
+    });
+    console.log(`black: ${black}, white: ${white}, wrong: ${wrong}`);
 }
 
 
