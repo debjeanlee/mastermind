@@ -89,10 +89,22 @@ function colorClicked(id) {
     }
 }
 
+let feedback = $(".feedback_container");
+// feedback.text("YOU WIN A BAGEL");
+// console.log(feedback);
+
 
 // // // function to check for win
-function checkWin(answer, guess) {
-
+function checkWin() {
+    if (answer.length == guess.length) {
+        answer.forEach((el, i) => {
+            if (el == guess[i]) {
+                feedback.text("You win A BAHGAL");
+            }
+        })
+    }
 }
+
+// console.log(checkWin());
 
 console.log(answer);
