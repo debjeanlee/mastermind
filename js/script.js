@@ -91,6 +91,7 @@ function checkWin() {
             if (el == guess[i]) {
                 changeRoundPins();
                 feedback.text("Winner Winner Chicken Eats Dinner");
+                $("#check").off("click");
             } else {
                 feedback.text("Try again sucker");
                 changeRoundPins();
