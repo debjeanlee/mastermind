@@ -90,18 +90,18 @@ function checkWin() {
         answer.forEach((el, i) => {
             if (el == guess[i]) {
                 changeRoundPins();
-                feedback.text("Winner Winner Chicken Eats Dinner");
-                $("#check").off("click");
+                feedback.text("Winner winner chicken bagel dinner");
+                // $("#check").off("click");
             } else {
-                feedback.text("Try again sucker");
                 changeRoundPins();
-                guess = [];
+                feedback.text("Try again sucker");
                 changeBackToBlack();
             }
         })
+        guess = [];
         round++;
     } else {
-        console.log(guess.length);
+        // console.log(guess.length);
         feedback.text("Not enough pins chosen moron");
     }
 }
@@ -130,6 +130,46 @@ function changeBackToBlack() {
 $("#check").click(function() {
     checkWin();
 })
+
+let totallyCorrect = 0;
+let indexOfCorrect = [];
+let wrongPlace = 0;
+
+// function to assign result pins
+function showGuessResults() {
+    guess.forEach((el, i) => {
+        if (el == answer[i]) {
+            totallyCorrect++;
+            indexOfCorrect.push(i);
+        }
+    });
+    // checkForIncorrect();
+    console.log(totallyCorrect, wrongPlace);
+}
+
+
+// function checkForIncorrect() {
+//    let reverseAns = indexOfCorrect.reverse();
+//    let guessCheck = guess;
+//    reverseAns.forEach(el => {
+//        let check = answer;
+//        check.splice(el, 1);
+//    });
+//    let reverseGuess = indexOfCorrect.reverse();
+//    reverseGuess.forEach(el => {
+//        guessCheck.splice(el, 1);
+//    })
+//    guessCheck.forEach(el => {
+//        for (let x = check.length; x > 0; x--) {
+//            if (el == check[x]) {
+//                wrongPlace++;
+//                check.splice(x, 1);
+//             //    console.log(answer, guess);
+//            }
+//        }
+//    })
+// }
+
 
 
 // // // TO DO
