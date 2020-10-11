@@ -23,12 +23,14 @@ h1 {
     line-height: 30%;
     padding: 0 auto;
     margin-bottom: 20px;
+    color: rgb(58, 53, 53);
 }
 
 h4 {
     line-height: 30%;
     margin-top: 0;
     font-size: 18px;
+    color: #93A8C0;
 }
 
 .main_left {
