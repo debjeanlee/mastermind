@@ -150,7 +150,7 @@ h4 {
 }
 
 .selector_pin {
-    border: 3px solid rgb(248, 248, 248);
+    border: 2px solid rgb(248, 248, 248);
     width: 18px;
     height: 18px;
     border-radius: 50%;
@@ -176,11 +176,11 @@ h4 {
 }
 
 #s_orange {
-    background-color: #ffa66b;
+    background-color: #ffc59e;
 }
 
 #s_purple {
-    background-color: #a38add;
+    background-color: #b4a1e2;
 }
 
 .button {

@@ -45,8 +45,6 @@ function changePinColor(pinNum, colorInd, id) {
     }
 }
 
-// changePinColor(1, 1, "#answer");
-
 setAnswer();
 
 // // // function to select pin color guess
@@ -132,12 +130,12 @@ $("#check").click(function() {
     checkWin();
 })
 
-// changeRoundPins();
 
+// // // TO DO
+// SHOW RESULT PINS
+// CHANGE PIN COLORS OF RESULT PINS
+// FUNCTION TO COMPARE RESULTS INDIV
 
-// NEED FUNCTION TO CHECK IF PINS ON BOARDS ARE COLOURED
-
-
-// console.log(checkWin());
-
-// console.log(answer);
+// RESET GAME BUTTON
+// DELETE BUTTON
+// INSTRUCTIONS POP UP?
