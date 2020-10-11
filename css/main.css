@@ -4,10 +4,13 @@
 
 body {
     font-family: 'VT323', monospace;
+    text-align: center;
+    background-color: #fffcf2;
 }
 
 header {
     text-align: center;
+    margin-top: 50px;
 }
 
 main {
@@ -15,35 +18,51 @@ main {
     grid-template-columns: 4fr 3fr;
 }
 
+h1 {
+    font-size: 300%;
+    line-height: 30%;
+    padding: 0 auto;
+    margin-bottom: 20px;
+}
+
+h4 {
+    line-height: 30%;
+    margin-top: 0;
+    font-size: 18px;
+}
+
 .main_left {
-    border: 1px solid fuchsia;
+    /* border: 1px solid fuchsia; */
  display: flex;
  justify-content: flex-end;
  /* align-items: ; */
 }
 
 .main_right {
-    border: 1px solid fuchsia;
+    /* border: 1px solid fuchsia; */
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
 }
 .gameplay {
-    border: 1px solid pink;
+    /* border: 1px solid pink; */
     display: flex;
 }
 
 .board {
-    border: 1px solid black;
+    border: 5px solid #D7B791;
+    border-radius: 20px;
     display: grid;
     grid-template-columns: 6fr 2fr;
     width: 300px;
     margin-right: 20px;
+    background-color: #ecd6b9;
+    color: rgb(114, 114, 114);
 }
 
 .left {
-    border-right: 1px solid brown;
+    border-right: 2px solid#D7B791;
     display: grid;
     grid-template-rows: repeat(12, 1fr);
 }
@@ -57,28 +76,34 @@ main {
     padding: 0;
 }
 
-#answer {
-    border-bottom: 5px solid brown;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    text-align: center;
-    align-items: center;
-}
-
 #guess {
-    border-top: 5px solid brown;
+    border-top: 3px solid #D7B791;
     padding-top: 14px;
     padding-bottom: 8px;
     margin-top: 2px;
 }
 
 .big_pin {
-    border: 1px solid rgb(133, 92, 59);
+    border: 3px solid  rgb(248, 248, 248);
     width: 25px;
     height: 25px;
     border-radius: 50%;
     margin: 0 auto;
     padding: 0;
+    background-color: rgb(184, 161, 134);
+    line-height: 110%;
+}
+
+#answer {
+    border-bottom: 3px solid #D7B791;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: center;
+    align-items: center;
+}
+
+#answer > .big_pin {
+    line-height: 135%;
 }
 
 .right {
@@ -97,53 +122,59 @@ main {
 }
 
 .small_pin {
-    border: 1px solid rgb(133, 92, 59);
+    border: 3px solid rgb(248, 248, 248);
     width: 12px;
     height: 12px;
     border-radius: 50%;
     margin: 0 auto;
+    line-height: 0;
+    font-size: 15px;
+    background-color: rgb(184, 161, 134);
 }
 
 #color_select {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    border-top: 5px solid brown;
+    border-top: 3px solid #D7B791;
 }
 
 .selector_pin {
-    border: 1px solid rgb(133, 92, 59);
+    border: 3px solid rgb(248, 248, 248);
     width: 18px;
     height: 18px;
     border-radius: 50%;
     margin: 1px auto;
+    font-size: 20px;
+    line-height: 20%;
+    background-color: rgb(184, 161, 134);
 }
 #s_red {
-    background-color: #FBB9C5;
+    background-color: #faadbb;
 }
 
 #s_blue {
-    background-color: #B8DFE6;
+    background-color: #abdde6;
 }
 
 #s_green {
-    background-color: #C3EDBF;
+    background-color: #b2ecad;
 }
 
 #s_yellow {
-    background-color: #F9EFC7;
+    background-color: #f6e9b3;
 }
 
 #s_orange {
-    background-color: #FDD0B1;
+    background-color: #ffc59e;
 }
 
 #s_purple {
-    background-color: #C5BBDE;
+    background-color: #b4a1e2;
 }
 
 .button {
-    border: 4px solid rgb(212, 212, 212);
+    border: 4px solid rgb(231, 231, 231);
     display: flex;
     border-radius: 10px;
     width: 150px;
@@ -154,5 +185,5 @@ main {
     justify-content: center;
     align-items: center;
     background-color: rgb(197, 197, 197);
-    color: rgb(248, 248, 248);
+    color: rgb(255, 255, 255);
 }

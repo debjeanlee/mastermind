@@ -26,22 +26,22 @@ function changePinColor(pinNum, colorInd, id) {
     let pin = document.querySelector(`${id} div:nth-child(${pinNum})`);
     switch (answerChoices[colorInd]) {
         case "red":
-            pin.style.backgroundColor = "#FBB9C5";
+            pin.style.backgroundColor = "#faadbb";
             break;
         case "orange":
-            pin.style.backgroundColor = "#FDD0B1";
+            pin.style.backgroundColor = "#ffc59e";
             break;
         case "yellow":
-            pin.style.backgroundColor = "#F9EFC7";
+            pin.style.backgroundColor = "#f6e9b3";
             break;
         case "blue":
-            pin.style.backgroundColor = "#B8DFE6";
+            pin.style.backgroundColor = "#abdde6";
             break;
         case "green":
-            pin.style.backgroundColor = "#C3EDBF";
+            pin.style.backgroundColor = "#b2ecad";
             break;
         case "purple":
-            pin.style.backgroundColor = "#C5BBDE";
+            pin.style.backgroundColor = "#b4a1e2";
             break;
     }
     // pin.style.backgroundColor = answerChoices[colorInd];
