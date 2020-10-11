@@ -86,6 +86,7 @@ function colorClicked(id) {
 
 // // // function to check for win
 function checkWin() {
+    showGuessResults();
     if (answer.length == guess.length) {
         answer.forEach((el, i) => {
             if (el == guess[i]) {
@@ -96,9 +97,9 @@ function checkWin() {
                 changeRoundPins();
                 feedback.text("Try again sucker");
                 changeBackToBlack();
+                guess = [];
             }
         })
-        guess = [];
         round++;
     } else {
         // console.log(guess.length);
@@ -137,39 +138,33 @@ let wrongPlace = 0;
 
 // function to assign result pins
 function showGuessResults() {
-    guess.forEach((el, i) => {
-        if (el == answer[i]) {
-            totallyCorrect++;
-            indexOfCorrect.push(i);
+    let x = Array.from(answer);
+    let y = Array.from(guess);
+    let compCorrect = 0;
+    let placeWrong = 0;
+    let wrong = 0;
+    x.forEach((el, i) => {
+        if (el == y[i]) {
+            console.log("before" + x + y);
+            x.splice(i,1);
+            y.splice(i,1);
+            console.log("after trimming: " + x + y);
+            compCorrect++;
+        } else {
+            y.forEach((el1, i1) => {
+                if (el == el1) {
+                    x.splice(i,1);
+                    y.splice(i1, 1);
+                    placeWrong++;
+                } else {
+                    wrong++;
+                }
+            })
         }
-    });
-    // checkForIncorrect();
-    console.log(totallyCorrect, wrongPlace);
+    })
+    console.log(x, y);
+    console.log(compCorrect, placeWrong);
 }
-
-
-// function checkForIncorrect() {
-//    let reverseAns = indexOfCorrect.reverse();
-//    let guessCheck = guess;
-//    reverseAns.forEach(el => {
-//        let check = answer;
-//        check.splice(el, 1);
-//    });
-//    let reverseGuess = indexOfCorrect.reverse();
-//    reverseGuess.forEach(el => {
-//        guessCheck.splice(el, 1);
-//    })
-//    guessCheck.forEach(el => {
-//        for (let x = check.length; x > 0; x--) {
-//            if (el == check[x]) {
-//                wrongPlace++;
-//                check.splice(x, 1);
-//             //    console.log(answer, guess);
-//            }
-//        }
-//    })
-// }
-
 
 
 // // // TO DO
@@ -179,4 +174,4 @@ function showGuessResults() {
 
 // RESET GAME BUTTON
 // DELETE BUTTON
-// INSTRUCTIONS POP UP?
+// INSTRUCTIONS POP UP
