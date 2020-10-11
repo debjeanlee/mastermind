@@ -24,7 +24,27 @@ function setAnswer() {
 // // //changes individual pin color with pin number, color index and selector
 function changePinColor(pinNum, colorInd, id) {
     let pin = document.querySelector(`${id} div:nth-child(${pinNum})`);
-    pin.style.backgroundColor = answerChoices[colorInd];
+    switch (answerChoices[colorInd]) {
+        case "red":
+            pin.style.backgroundColor = "#FBB9C5";
+            break;
+        case "orange":
+            pin.style.backgroundColor = "#FDD0B1";
+            break;
+        case "yellow":
+            pin.style.backgroundColor = "#F9EFC7";
+            break;
+        case "blue":
+            pin.style.backgroundColor = "#B8DFE6";
+            break;
+        case "green":
+            pin.style.backgroundColor = "#C3EDBF";
+            break;
+        case "purple":
+            pin.style.backgroundColor = "#C5BBDE";
+            break;
+    }
+    // pin.style.backgroundColor = answerChoices[colorInd];
     // console.log(pin);
 }
 

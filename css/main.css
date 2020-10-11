@@ -119,27 +119,27 @@ main {
     margin: 1px auto;
 }
 #s_red {
-    background-color: red;
+    background-color: #FBB9C5;
 }
 
 #s_blue {
-    background-color: blue;
+    background-color: #B8DFE6;
 }
 
 #s_green {
-    background-color: green;
+    background-color: #C3EDBF;
 }
 
 #s_yellow {
-    background-color: yellow;
+    background-color: #F9EFC7;
 }
 
 #s_orange {
-    background-color: orange;
+    background-color: #FDD0B1;
 }
 
 #s_purple {
-    background-color: purple;
+    background-color: #C5BBDE;
 }
 
 .button {
