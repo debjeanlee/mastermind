@@ -91,5 +91,8 @@ function colorClicked(id) {
 
 
 // // // function to check for win
+function checkWin(answer, guess) {
+
+}
 
 console.log(answer);

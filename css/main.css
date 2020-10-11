@@ -106,6 +106,8 @@ h4 {
 
 #answer > .big_pin {
     line-height: 135%;
+    background-color: rgb(192, 174, 150);
+    color: rgb(240, 230, 218);
 }
 
 .right {
