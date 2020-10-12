@@ -16,7 +16,7 @@ function setAnswer() {
         let colorIndex = Math.floor(Math.random() * 6);
         answer.push(colorIndex);
         // console.log(answer);
-    // }
+    }
 
     // answer.forEach((el, i) => {
     //     changePinColor(i+1, el, "#answer")
