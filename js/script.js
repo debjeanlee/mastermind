@@ -5,7 +5,6 @@ let guess = [];
 let indexOfCorrect = [];
 let black = 0;
 let white = 0;
-let wrong = 0;
 let round = 1;
 let results = [];
 let feedback = $(".feedback_container");
@@ -149,7 +148,6 @@ function getGuessResults() {
     // creates new arrays from answer and guess
     let ans = Array.from(answer);
     let gs = Array.from(guess);
-    console.log(`initial ans/gs ${ans}, ${gs}`);
 
     // check for black pins
     gs.forEach((el, i) => {
@@ -159,8 +157,6 @@ function getGuessResults() {
         } 
     })
 
-    console.log(`indexOfCorr item: ${indexOfCorrect}`);
-
     // remove correct answers from arrays
     let removeItems = indexOfCorrect.reverse();
     console.log(`index of items to remove:${removeItems}`);
@@ -169,28 +165,20 @@ function getGuessResults() {
         gs.splice(el, 1);
     })
 
-    console.log(`items removed - ans: ${ans}, gs: ${gs}`);
-
     // sort guess arr without black answers so we start with biggest number
     gs.sort();
     ans.sort();
     
-    console.log(`sorted gs - ans: ${ans}, gs: ${gs}`);
-    // console.log(`length of gs ${gs.length}`);{
-        gs.forEach((el, i) => {
-            if (ans.includes(el)) {
-                results.push("white");
-                let indOfEl = ans.indexOf(el);
-                ans.splice(indOfEl, 1);
-                console.log(`after last splice ${ans}`);
-            } else {
-                wrong++;
-            }
-        })
+    // for each element of gs, if ans includes ele, push white to results, else increase wrong count;
+    gs.forEach((el, i) => {
+        if (ans.includes(el)) {
+            results.push("white");
+            let indOfEl = ans.indexOf(el);
+            ans.splice(indOfEl, 1);
+         } 
+    })
     
-    console.log(`black & white: ${results}, wrong: ${wrong}`);
     changeResultPins();
-    wrong = 0;
     results = [];
     indexOfCorrect = [];
 }
@@ -202,12 +190,6 @@ function changeResultPins () {
     })
 }
 
-
-
-// // // TO DO
-// SHOW RESULT PINS
-// CHANGE PIN COLORS OF RESULT PINS
-// FUNCTION TO COMPARE RESULTS INDIV
 
 // RESET GAME BUTTON
 // DELETE BUTTON
