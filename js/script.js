@@ -195,7 +195,6 @@ function changeResultPins () {
 }
 
 $("#reset").click(function() {
-    console.log(`ans ${answer} guess:${guess} indexOfCorrect:${indexOfCorrect} b/w/r:${black}/${white}/${round}, results:${results}`);
     answer = [];
     guess = [];
     indexOfCorrect = [];
@@ -206,7 +205,6 @@ $("#reset").click(function() {
     feedback.text("New game loaded");
     setAnswer();
     changeAllToBlack();
-    console.log(`ans ${answer} guess:${guess} indexOfCorrect:${indexOfCorrect} b/w/r:${black}/${white}/${round}, results:${results}`);
 })
 
 function changeAllToBlack() {
@@ -224,6 +222,11 @@ function changeAllToBlack() {
     }
 }
 
-// RESET GAME BUTTON
+
+
+// //  uhhhh maybe later 
+// function to change pin color and array item in guess
+
+
 // DELETE BUTTON
 // INSTRUCTIONS POP UP
