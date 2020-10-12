@@ -18,9 +18,9 @@ function setAnswer() {
         // console.log(answer);
     }
 
-    answer.forEach((el, i) => {
-        changePinColor(i+1, el, "#answer")
-    })
+    // answer.forEach((el, i) => {
+    //     changePinColor(i+1, el, "#answer")
+    // })
 }
 
 // // //changes individual pin color with pin number, color index and selector
