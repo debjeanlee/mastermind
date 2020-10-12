@@ -7,6 +7,7 @@ let black = 0;
 let white = 0;
 let wrong = 0;
 let round = 1;
+let results = [];
 let feedback = $(".feedback_container");
 
 
@@ -154,7 +155,7 @@ function getGuessResults() {
     gs.forEach((el, i) => {
         if (el == ans[i]) {
             indexOfCorrect.push(i);
-            black++;
+            results.push("black");
         } 
     })
 
@@ -178,7 +179,7 @@ function getGuessResults() {
     // console.log(`length of gs ${gs.length}`);{
         gs.forEach((el, i) => {
             if (ans.includes(el)) {
-                white++;
+                results.push("white");
                 let indOfEl = ans.indexOf(el);
                 ans.splice(indOfEl, 1);
                 console.log(`after last splice ${ans}`);
@@ -187,31 +188,21 @@ function getGuessResults() {
             }
         })
     
-
-
-
-    // for (let i = gs.length; i > 0; i--) {
-    //     let el = gs[i];
-    //     if (ans.includes(el) == true) {
-    //         white++;
-    //         let n = ans.indexOf(el);
-    //         ans.splice(n,1);
-    //         // gs.splice(i,1);
-    //         console.log(`removed white el ans ${ans}`);
-    //         console.log(`NEXT GUESS pls guess ${gs}`);
-    //     } else {
-    //         wrong++;
-    //     }
-    // }    
-
-    console.log(`black: ${black}, white: ${white}, wrong: ${wrong}`);
-    black = 0;
-    white = 0;
+    console.log(`black & white: ${results}, wrong: ${wrong}`);
+    changeResultPins();
     wrong = 0;
+    results = [];
     indexOfCorrect = [];
 }
 
-   
+function changeResultPins () {
+    results.forEach((el, i) => {
+        let pin = $(`#ans${round} div:nth-child(${i+1})`);
+        pin.css("background-color", el);
+    })
+}
+
+
 
 // // // TO DO
 // SHOW RESULT PINS
