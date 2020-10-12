@@ -148,19 +148,15 @@ function showGuessResults() {
             indexOfCorrect.push(i);
         }
     });
-    // console.log(indexOfCorrect);
 
     indexOfCorrect.reverse();
     indexOfCorrect.forEach(el => {
         x.splice(el,1);
         y.splice(el,1);
     });
-    // console.log(`${x} - reversed and cut out correct answers, ${y}`);
 
     x.sort();
     y.sort();
-
-    // console.log(`{sorted x and y ${x}, ${y}}`);
 
     x.forEach((el, i) => {
         if (y.includes(el) == true) {
@@ -168,47 +164,15 @@ function showGuessResults() {
             let n = y.indexOf(el);
             y.splice(n,1);
             x.splice(i,1);
-            // console.log(`$x with correct color wrong place removed: ${x}, ${y}`);
         } else {
             wrong++;
-            // console.log(`wrong ${wrong}`);
         }
     })
-    // wrong = x.length;
-    // console.log(`black: ${black}, white: ${white}, wrong: ${wrong}`);
     black = 0;
     white = 0;
     wrong = 0;
 }
-    
-// }
-
-
-// let x = [1,3,2];
-// let y = [2,1,1];
-// let white = 0;
-// let wrong = 0;
-// // console.log(x.sort());
-// // console.log(y.sort());
-
-// // console.log(y.includes(1));
-// // console.log(y.indexOf(1));
-
-// function getWhitePins() {
-//     x.forEach((el, i) => {
-//         if (y.includes(el) == true) {
-//             white++;
-//             let n = y.indexOf(el);
-//             y.splice(n,1);
-//             x.splice(i,1);
-//         }
-//     })
-//     wrong = x.length;
-// }
-// getWhitePins();
-// console.log(`x: ${x}, y: ${y}, white: ${white}, wrong: ${wrong}`);
-
-// console.log(y.sort());
+   
 
 // // // TO DO
 // SHOW RESULT PINS
