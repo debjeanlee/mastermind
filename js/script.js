@@ -2,7 +2,10 @@ let answerChoices = ["red", "blue", "green", "yellow", "purple", "orange"];
 
 let answer = [];
 let guess = [];
-let results =[];
+let indexOfCorrect = [];
+let black = 0;
+let white = 0;
+let wrong = 0;
 let round = 1;
 let feedback = $(".feedback_container");
 
@@ -132,16 +135,12 @@ $("#check").click(function() {
     checkWin();
 })
 
-let black = 0;
-let white = 0;
-let wrong = 0;
-
 // function to assign result pins
 function showGuessResults() {
-    let indexOfCorrect = [];
     let x = Array.from(answer);
     let y = Array.from(guess);
 
+    // // checks for correct pins at positions and pushes index to indexOfCorrect
     y.forEach((el, i) => {
         if (el == x[i]) {
             black++;
@@ -149,25 +148,31 @@ function showGuessResults() {
         }
     });
 
+    // // reverses index to descending order so splicing is not messed up
     indexOfCorrect.reverse();
+
+    // // for each element(== index of correct item), removes item from new arr x and y
     indexOfCorrect.forEach(el => {
         x.splice(el,1);
         y.splice(el,1);
     });
 
-    x.sort();
+    // // sorts elements in array, reverses x
     y.sort();
 
-    x.forEach((el, i) => {
-        if (y.includes(el) == true) {
+    // // for each element in reverse guess array, if answer includes y[el]
+   for (let i = y.length; i > 0; i--) {
+        let el = y[i];
+        if (x.includes(el) == true) {
             white++;
-            let n = y.indexOf(el);
-            y.splice(n,1);
-            x.splice(i,1);
+            let n = x.indexOf(el);
+            x.splice(n,1);
+            y.splice(i,1);
         } else {
             wrong++;
         }
-    })
+    }
+    console.log(`black: ${black}, white: ${white}, wrong: ${wrong}`);
     black = 0;
     white = 0;
     wrong = 0;
