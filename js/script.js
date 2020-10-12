@@ -94,8 +94,12 @@ function checkWin() {
             feedback.text("Winner winner chicken bagel dinner");
             // $("#check").off("click");
         } else {
-            feedback.text("Try again sucker");
-            guess = [];
+            if (round == 10) {
+                feedback.text("Loser Schmooozer");
+            } else {
+                feedback.text("Try again sucker");
+                guess = [];
+            }
         }
     })
     round++;
@@ -159,7 +163,7 @@ function getGuessResults() {
 
     // remove correct answers from arrays
     let removeItems = indexOfCorrect.reverse();
-    console.log(`index of items to remove:${removeItems}`);
+    
     indexOfCorrect.forEach(el => {
         ans.splice(el, 1);
         gs.splice(el, 1);
