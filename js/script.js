@@ -164,7 +164,7 @@ function getGuessResults() {
     // remove correct answers from arrays
     let removeItems = indexOfCorrect.reverse();
 
-    indexOfCorrect.forEach(el => {
+    removeItems.forEach(el => {
         ans.splice(el, 1);
         gs.splice(el, 1);
     })
@@ -194,6 +194,35 @@ function changeResultPins () {
     })
 }
 
+$("#reset").click(function() {
+    console.log(`ans ${answer} guess:${guess} indexOfCorrect:${indexOfCorrect} b/w/r:${black}/${white}/${round}, results:${results}`);
+    answer = [];
+    guess = [];
+    indexOfCorrect = [];
+    black = 0;
+    white = 0;
+    round = 1;
+    results = [];
+    feedback.text("New game loaded");
+    setAnswer();
+    changeAllToBlack();
+    console.log(`ans ${answer} guess:${guess} indexOfCorrect:${indexOfCorrect} b/w/r:${black}/${white}/${round}, results:${results}`);
+})
+
+function changeAllToBlack() {
+    for (let i = 1; i < 11; i++) {
+        for (let x = 1; x < 5; x++) {
+            let pin = $(`#guess${i} div:nth-child(${x})`);
+            pin.css("background-color","rgb(207, 187, 165)");
+        }
+    }
+    for (let i = 1; i < 11; i++) {
+        for (let x = 1; x < 5; x++) {
+            let pin = $(`#ans${i} div:nth-child(${x})`);
+            pin.css("background-color","rgb(238, 207, 172)");
+        }
+    }
+}
 
 // RESET GAME BUTTON
 // DELETE BUTTON
