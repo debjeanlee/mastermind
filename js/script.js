@@ -89,25 +89,16 @@ function colorClicked(id) {
 
 // // // function to check for win
 function checkWin() {
-    showGuessResults();
-    if (answer.length == guess.length) {
-        answer.forEach((el, i) => {
-            if (el == guess[i]) {
-                changeRoundPins();
-                feedback.text("Winner winner chicken bagel dinner");
-                // $("#check").off("click");
-            } else {
-                changeRoundPins();
-                feedback.text("Try again sucker");
-                changeBackToBlack();
-                guess = [];
-            }
-        })
-        round++;
-    } else {
-        // console.log(guess.length);
-        feedback.text("Not enough pins chosen moron");
-    }
+    answer.forEach((el, i) => {
+        if (el == guess[i]) {
+            feedback.text("Winner winner chicken bagel dinner");
+            // $("#check").off("click");
+        } else {
+            feedback.text("Try again sucker");
+            guess = [];
+        }
+    })
+    round++;
 }
 
 // NEED FUNCTION TO CHANGE COLORS OF PINS ON BOARDS
@@ -123,6 +114,16 @@ function changeRoundPins () {
 })
 }
 
+// check if guess length is correct
+function checkGuessLength() {
+    if (guess.length == answer.length) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+//  changes guess pins back to black
 function changeBackToBlack() {
     for (let x = 1; x < 5; x++) {
         let pin = $(`#guess div:nth-child(${x})`);
@@ -130,53 +131,86 @@ function changeBackToBlack() {
     }
 }
 
-
+// check button on click
 $("#check").click(function() {
-    checkWin();
+    if (checkGuessLength() == true) {
+        getGuessResults();
+        changeRoundPins();
+        changeBackToBlack();
+        checkWin();
+    } else {
+        feedback.text("CHOOSE MORE PINS DUMBASS");
+    }
 })
 
 // function to assign result pins
-function showGuessResults() {
-    let x = Array.from(answer);
-    let y = Array.from(guess);
+function getGuessResults() {
+    // creates new arrays from answer and guess
+    let ans = Array.from(answer);
+    let gs = Array.from(guess);
+    console.log(`initial ans/gs ${ans}, ${gs}`);
 
-    // // checks for correct pins at positions and pushes index to indexOfCorrect
-    y.forEach((el, i) => {
-        if (el == x[i]) {
-            black++;
+    // check for black pins
+    gs.forEach((el, i) => {
+        if (el == ans[i]) {
             indexOfCorrect.push(i);
-        }
-    });
+            black++;
+        } 
+    })
 
-    // // reverses index to descending order so splicing is not messed up
-    indexOfCorrect.reverse();
+    console.log(`indexOfCorr item: ${indexOfCorrect}`);
 
-    // // for each element(== index of correct item), removes item from new arr x and y
+    // remove correct answers from arrays
+    let removeItems = indexOfCorrect.reverse();
+    console.log(`index of items to remove:${removeItems}`);
     indexOfCorrect.forEach(el => {
-        x.splice(el,1);
-        y.splice(el,1);
-    });
+        ans.splice(el, 1);
+        gs.splice(el, 1);
+    })
 
-    // // sorts elements in array, reverses x
-    y.sort();
+    console.log(`items removed - ans: ${ans}, gs: ${gs}`);
 
-    // // for each element in reverse guess array, if answer includes y[el]
-   for (let i = y.length; i > 0; i--) {
-        let el = y[i];
-        if (x.includes(el) == true) {
-            white++;
-            let n = x.indexOf(el);
-            x.splice(n,1);
-            y.splice(i,1);
-        } else {
-            wrong++;
-        }
-    }
+    // sort guess arr without black answers so we start with biggest number
+    gs.sort();
+    ans.sort();
+    
+    console.log(`sorted gs - ans: ${ans}, gs: ${gs}`);
+    // console.log(`length of gs ${gs.length}`);{
+        gs.forEach((el, i) => {
+            if (ans.includes(el)) {
+                white++;
+                let indOfEl = ans.indexOf(el);
+                ans.splice(indOfEl, 1);
+                console.log(`after last splice ${ans}`);
+            } else {
+                wrong++;
+            }
+        })
+    
+
+
+
+    // for (let i = gs.length; i > 0; i--) {
+    //     let el = gs[i];
+    //     if (ans.includes(el) == true) {
+    //         white++;
+    //         let n = ans.indexOf(el);
+    //         ans.splice(n,1);
+    //         // gs.splice(i,1);
+    //         console.log(`removed white el ans ${ans}`);
+    //         console.log(`NEXT GUESS pls guess ${gs}`);
+    //     } else {
+    //         wrong++;
+    //     }
+    // }    
+
     console.log(`black: ${black}, white: ${white}, wrong: ${wrong}`);
     black = 0;
     white = 0;
     wrong = 0;
+    indexOfCorrect = [];
 }
+
    
 
 // // // TO DO
