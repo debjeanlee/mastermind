@@ -16,7 +16,7 @@ function setAnswer() {
         let colorIndex = Math.floor(Math.random() * 6);
         answer.push(colorIndex);
         // console.log(answer);
-    }
+    // }
 
     // answer.forEach((el, i) => {
     //     changePinColor(i+1, el, "#answer")
@@ -163,7 +163,7 @@ function getGuessResults() {
 
     // remove correct answers from arrays
     let removeItems = indexOfCorrect.reverse();
-    
+
     indexOfCorrect.forEach(el => {
         ans.splice(el, 1);
         gs.splice(el, 1);
