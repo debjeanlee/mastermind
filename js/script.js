@@ -246,7 +246,7 @@ $("#instructions").click(function() {
     swal({
         content: "text",
         title: "Instructions",
-        text: "Break the code! You have 10 turns to guess the code.",
+        text: "You have 10 turns. Black pins represent the correct colored pin, in the correct place. White pins mean you have the correct colored pin, in the wrong place.",
         buttons: {
             confirm : {text:"PLAY TIME", className:"sweet-hover "}
         },
