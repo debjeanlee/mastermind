@@ -227,6 +227,16 @@ function changeAllToBlack() {
 // //  uhhhh maybe later 
 // function to change pin color and array item in guess
 
+// function to delete last item
+function removeLastGuess() {
+    guess.pop();
+    let x = guess.length;
+    let id = $(`#s${x+1}`);
+    id.css("background-color", "rgb(207, 187, 165)");
+}
 
-// DELETE BUTTON
+$("#clear").click(function() {
+    removeLastGuess();
+})
+
 // INSTRUCTIONS POP UP
