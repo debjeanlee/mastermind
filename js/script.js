@@ -143,9 +143,7 @@ $("#check").click(function() {
             changeRoundPins();
             changeBackToBlack();
             checkWin();
-        } else {
-            $("#check").off("click");
-        }
+        } 
     } else {
         feedback.text("CHOOSE MORE PINS DUMBASS");
     }
