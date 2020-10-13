@@ -96,7 +96,7 @@ h4 {
     margin-top: 2px;
 }
 
-.big_pin {
+.big_pin, .guess_pin {
     border: 3px solid  rgb(248, 248, 248);
     width: 25px;
     height: 25px;

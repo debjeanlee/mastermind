@@ -8,7 +8,9 @@ let white = 0;
 let round = 1;
 let results = [];
 let feedback = $(".feedback_container");
-
+let pinSelect;
+let pinColor;
+let pinNum;
 
 // // // sets random answer chosen by computer
 function setAnswer() {
@@ -22,6 +24,7 @@ function setAnswer() {
     //     changePinColor(i+1, el, "#answer")
     // })
 }
+
 
 // // //changes individual pin color with pin number, color index and selector
 function changePinColor(pinNum, colorInd, id) {
@@ -49,19 +52,6 @@ function changePinColor(pinNum, colorInd, id) {
 }
 
 setAnswer();
-
-// // // function to select pin color guess
-$(".selector_pin").click(function() {
-    let id = $(this).attr("id");
-    if (guess.length < 4) {
-        colorClicked(id);
-        let pinNum = guess.length;
-        let color = guess[guess.length - 1];
-        changePinColor(pinNum, color, "#guess");
-        // console.log(guess);
-    }
-});
-
 
 // // // function to add clicked color to guess arr
 function colorClicked(id) {
@@ -226,23 +216,6 @@ function changeAllToBlack() {
     }
 }
 
-
-
-// //  uhhhh maybe later 
-// function to change pin color and array item in guess
-
-// function to delete last item
-function removeLastGuess() {
-    guess.pop();
-    let x = guess.length;
-    let id = $(`#s${x+1}`);
-    id.css("background-color", "rgb(207, 187, 165)");
-}
-
-$("#clear").click(function() {
-    removeLastGuess();
-})
-
 $("#instructions").click(function() {
     swal({
         content: "text",
@@ -254,6 +227,65 @@ $("#instructions").click(function() {
       });
 })
 
+// gets id of clicked div
+$(".guess_pin").click(function(event) {
+    pinSelect = event.target.id;
+    console.log("pinselected: " + event.target.id );
+  });
 
 
-// INSTRUCTIONS POP UP
+// // // function to select pin color guess
+$(".selector_pin").click(function(event) {
+    if (pinSelect == undefined) {
+        let id = $(this).attr("id");
+        if (guess.length < 4) {
+            colorClicked(id);
+            let pinNum = guess.length;
+            let color = guess[guess.length - 1];
+            changePinColor(pinNum, color, "#guess");
+            // pinSelect = undefined;
+            // console.log("pin select after click:" + pinSelect);
+        }
+    // } else {
+    //     pinColor = event.target.id;
+    //     console.log("color selected: " + pinColor);
+    //     let color = getColorId(pinColor);
+    //     console.log("color:" + color);
+    //     $(`#${pinSelect}`).css("background-color", color);
+    //     pinSelect = undefined;
+    // }
+    }
+});
+
+function getColorId(x) {
+    switch (x) {
+        case "s_red":
+            return color = "#ff8097";
+        case "s_orange":
+            return color = "#ffa66b";
+        case "s_yellow":
+            return color = "#ffe992";
+        case "s_blue":
+            return color = "#92d6e2";
+        case "s_green":
+            return color = "#9fec98";
+        case "s_purple":
+            return color = "#a38add";
+    }
+}
+
+
+// function to delete last item
+function removeLastGuess() {
+    guess.pop();
+    let x = guess.length;
+    let id = $(`#${x+1}`);
+    id.css("background-color", "rgb(207, 187, 165)");
+}
+
+$("#clear").click(function() {
+    removeLastGuess();
+})
+
+// // function to update guess array
+// function to change pin color and array item in guess
