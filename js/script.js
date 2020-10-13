@@ -92,7 +92,6 @@ function checkWin() {
     answer.forEach((el, i) => {
         if (el == guess[i]) {
             feedback.text("Winner winner chicken bagel dinner");
-            // $("#check").off("click");
         } else {
             if (round == 10) {
                 feedback.text("Loser Schmooozer");
@@ -138,10 +137,14 @@ function changeBackToBlack() {
 // check button on click
 $("#check").click(function() {
     if (checkGuessLength() == true) {
-        getGuessResults();
-        changeRoundPins();
-        changeBackToBlack();
-        checkWin();
+        if (round < 11) {
+            getGuessResults();
+            changeRoundPins();
+            changeBackToBlack();
+            checkWin();
+        } else {
+            $("#check").off("click");
+        }
     } else {
         feedback.text("CHOOSE MORE PINS DUMBASS");
     }
