@@ -92,7 +92,6 @@ function checkWin() {
     answer.forEach((el, i) => {
         if (el == guess[i]) {
             feedback.text("Winner winner chicken bagel dinner");
-            $("#check").off("click");
         } else {
             if (round == 10) {
                 feedback.text("Loser Schmooozer");
@@ -134,6 +133,19 @@ function changeBackToBlack() {
         pin.css("background-color","rgb(207, 187, 165)");
     }
 }
+
+// function to delete last item
+function removeLastGuess() {
+    guess.pop();
+    let x = guess.length;
+    let id = $(`#${x+1}`);
+    id.css("background-color", "rgb(207, 187, 165)");
+}
+
+$("#clear").click(function() {
+    removeLastGuess();
+})
+
 
 // check button on click
 $("#check").click(function() {
@@ -229,17 +241,6 @@ function changeAllToBlack() {
 // //  uhhhh maybe later 
 // function to change pin color and array item in guess
 
-// function to delete last item
-function removeLastGuess() {
-    guess.pop();
-    let x = guess.length;
-    let id = $(`#s${x+1}`);
-    id.css("background-color", "rgb(207, 187, 165)");
-}
-
-$("#clear").click(function() {
-    removeLastGuess();
-})
 
 $("#instructions").click(function() {
     swal({
