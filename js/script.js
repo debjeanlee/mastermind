@@ -256,4 +256,3 @@ $("#instructions").click(function() {
 
 
 
-// INSTRUCTIONS POP UP
