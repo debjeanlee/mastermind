@@ -94,7 +94,6 @@ function checkWin() {
     answer.forEach((el, i) => {
         if (el == guess[i]) {
             feedback.text("Winner winner chicken bagel dinner");
-            $("#check").off("click");
         } else {
             if (round == 10) {
                 feedback.text("Loser Schmooozer");
@@ -149,7 +148,9 @@ $("#clear").click(function() {
     removeLastGuess();
 })
 
-function roundFunc() {
+
+// check button on click
+$("#check").click(function() {
     if (checkGuessLength() == true) {
         if (round < 11) {
             getGuessResults();
@@ -160,12 +161,6 @@ function roundFunc() {
     } else {
         feedback.text("CHOOSE MORE PINS DUMBASS");
     }
-}
-
-
-// check button on click
-$("#check").click(function() {
-    roundFunc();
 })
 
 // function to assign result pins
@@ -226,9 +221,6 @@ $("#reset").click(function() {
     feedback.text("New game loaded");
     setAnswer();
     changeAllToBlack();
-    $("#check").click(function() {
-        roundFunc();
-    });
 })
 
 function changeAllToBlack() {
