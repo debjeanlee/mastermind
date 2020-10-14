@@ -10,6 +10,7 @@ let results = [];
 let feedback = $(".feedback_container");
 let win;
 let selectedGuessPin;
+let col_id;
 
 // // // sets random answer chosen by computer
 function setAnswer() {
@@ -50,20 +51,6 @@ function changePinColor(pinNum, colorInd, id) {
 }
 
 setAnswer();
-
-// // // function to select pin color guess
-$(".selector_pin").click(function() {
-    let id = $(this).attr("id");
-    if (guess.length < 4) {
-        colorClicked(id);
-        let pinNum = guess.length;
-        let color = guess[guess.length - 1];
-        changePinColor(pinNum, color, "#guess");
-        // console.log(guess);
-    } else {
-        feedback.text("Check your answer bij");
-    }
-});
 
 
 // // // function to add clicked color to guess arr
@@ -275,7 +262,54 @@ $("#instructions").click(function() {
 
 
 // // to store selected guess pin on click
-$(".guess_pin").click(function(event) {
+$("body").click(function(event) {
     selectedGuessPin = event.target.id;
-    console.log(selectedGuessPin);
+    console.log("seledtedguesspin: " + selectedGuessPin);
 })
+
+// // // function to select pin color guess
+// $(".selector_pin").click(function() {
+//     let id = $(this).attr("id");
+//     if (guess.length < 4) {
+//         colorClicked(id);
+//         let pinNum = guess.length;
+//         let color = guess[guess.length - 1];
+//         changePinColor(pinNum, color, "#guess");
+//         // console.log(guess);
+//     } else {
+//         feedback.text("Check your answer bij");
+//     }
+// });
+
+
+$(".selector_pin").click(function(event) {
+    let pin = selectedGuessPin;
+    console.log("pin: " + pin);
+    console.log("thisid: " + this.id);
+    let clickedId = this.id
+    console.log("clickedId: " + clickedId);
+    indexOfClickedColor(clickedId);
+    console.log("ID: " + col_id);
+    if (selectedGuessPin == "1" || selectedGuessPin == "2" || selectedGuessPin == "3" || selectedGuessPin == "4")
+        // need to get id of clicked color
+        $(`#${col_id}`).css("background-color");
+        changePinColor(pin, col_id, "#guess");
+});
+
+
+function indexOfClickedColor(clickedId) {
+    switch (clickedId) {
+        case "s_red":
+            return col_id = 0;
+        case "s_blue":
+            return col_id = 1;
+        case "s_green":
+            return col_id = 2;
+        case "s_yellow":
+            return col_id = 3;
+        case "s_purple":
+            return col_id = 4;
+        case "s_orange":
+            return col_id = 5;
+    }
+}
