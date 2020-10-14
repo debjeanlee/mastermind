@@ -275,20 +275,6 @@ $("body").click(function(event) {
     // console.log("seledtedguesspin: " + selectedGuessPin);
 })
 
-// // // function to select pin color guess
-// $(".selector_pin").click(function() {
-//     let id = $(this).attr("id");
-//     if (guess.length < 4) {
-//         colorClicked(id);
-//         let pinNum = guess.length;
-//         let color = guess[guess.length - 1];
-//         changePinColor(pinNum, color, "#guess");
-//         // console.log(guess);
-//     } else {
-//         feedback.text("Check your answer bij");
-//     }
-// });
-
 
 $(".selector_pin").click(function(event) {
     let pin = selectedGuessPin;
