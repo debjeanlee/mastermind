@@ -9,6 +9,7 @@ let round = 1;
 let results = [];
 let feedback = $(".feedback_container");
 let win;
+let selectedGuessPin;
 
 // // // sets random answer chosen by computer
 function setAnswer() {
@@ -273,5 +274,8 @@ $("#instructions").click(function() {
 })
 
 
-
-// INSTRUCTIONS POP UP
+// // to store selected guess pin on click
+$(".guess_pin").click(function(event) {
+    selectedGuessPin = event.target.id;
+    console.log(selectedGuessPin);
+})
