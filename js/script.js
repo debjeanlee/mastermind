@@ -292,13 +292,13 @@ $("body").click(function(event) {
 
 $(".selector_pin").click(function(event) {
     let pin = selectedGuessPin;
-    console.log("pin: " + pin);
+    // console.log("pin: " + pin);
     let clickedId = this.id
-    console.log("clickedId (this.id): " + clickedId);
+    // console.log("clickedId (this.id): " + clickedId);
     let pushToGuess = indexOfClickedColor(clickedId);
-    console.log("ID: " + col_id);
+    // console.log("ID: " + col_id);
 
-    console.log("guess length: " + guess.length);
+    // console.log("guess length: " + guess.length);
 
     if (selectedGuessPin == "1" || selectedGuessPin == "2" || selectedGuessPin == "3" || selectedGuessPin == "4") {
         // need to get id of clicked color
@@ -324,7 +324,7 @@ $(".selector_pin").click(function(event) {
         }
     }
     // console.log(emptyPin);
-    console.log("guess: " + guess);
+    // console.log("guess: " + guess);
 });
 
 function findEmptyPin() {
@@ -359,7 +359,7 @@ function indexOfClickedColor(clickedId) {
 function updateGuess(x) {
     if (selectedGuessPin == "1" || selectedGuessPin == "2" || selectedGuessPin == "3" || selectedGuessPin == "4") {
         let index = selectedGuessPin - 1;
-        console.log("index: " + index);
+        // console.log("index: " + index);
         if (guess.length == 0) {
             if (selectedGuessPin == 4) {
                 guess.push(null, null, null, x);
