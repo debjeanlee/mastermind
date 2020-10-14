@@ -11,6 +11,7 @@ let feedback = $(".feedback_container");
 let win;
 let selectedGuessPin;
 let col_id;
+let emptyPin;
 
 // // // sets random answer chosen by computer
 function setAnswer() {
@@ -297,6 +298,8 @@ $(".selector_pin").click(function(event) {
     let pushToGuess = indexOfClickedColor(clickedId);
     console.log("ID: " + col_id);
 
+    console.log("guess length: " + guess.length);
+
     if (selectedGuessPin == "1" || selectedGuessPin == "2" || selectedGuessPin == "3" || selectedGuessPin == "4") {
         // need to get id of clicked color
         $(`#${col_id}`).css("background-color");
@@ -305,18 +308,40 @@ $(".selector_pin").click(function(event) {
     } 
     // ADD ANOTHER ELSE IF TO CHECK FOR BLANKS
     else {
-        if (guess.length < 4) {
+        if (guess.length == 0) {
             colorClicked(clickedId);
             let pinNum = guess.length;
             let color = guess[guess.length - 1];
             changePinColor(pinNum, color, "#guess");
             // console.log(guess);
+        } else if (guess.length == 4) {
+            guess.forEach(el => {
+                if (el != null) {
+                    feedback.text("Check your answer bij");
+                }
+            })
         } else {
-            feedback.text("Check your answer bij");
+        //    check where blank pin is
+        // console.log("guess arr: " + guess);
+        // console.log("emptypin before: " + emptyPin);
+        findEmptyPin();
+        updateGuess(pushToGuess);
+        changePinColor(emptyPin, col_id, "#guess");
         }
     }
+    // console.log(emptyPin);
     console.log("guess: " + guess);
 });
+
+function findEmptyPin() {
+    for (let i = 3; i > 0; i--) {
+        if (guess[i] == null) {
+            emptyPin = i+1;
+            // console.log("emptypin: " + emptyPin);
+        }
+    } return emptyPin;
+}
+
 
 
 function indexOfClickedColor(clickedId) {
@@ -338,33 +363,38 @@ function indexOfClickedColor(clickedId) {
 
 // UPDATE ARRAY
 function updateGuess(x) {
-    let index = selectedGuessPin - 1;
-    console.log("index: " + index);
-    if (guess.length == 0) {
-        if (selectedGuessPin == 4) {
-            guess.push(null, null, null, x);
-        } else if (selectedGuessPin == 3) {
-            guess.push(null, null, x, null);
-        } else if (selectedGuessPin == 2) {
-            guess.push(null, x, null, null);
+    if (selectedGuessPin == "1" || selectedGuessPin == "2" || selectedGuessPin == "3" || selectedGuessPin == "4") {
+        let index = selectedGuessPin - 1;
+        console.log("index: " + index);
+        if (guess.length == 0) {
+            if (selectedGuessPin == 4) {
+                guess.push(null, null, null, x);
+            } else if (selectedGuessPin == 3) {
+                guess.push(null, null, x, null);
+            } else if (selectedGuessPin == 2) {
+                guess.push(null, x, null, null);
+            } else {
+                guess.push(x);
+            }
+        } else if (guess.length == 1) {
+            if (selectedGuessPin == 2) {
+                guess.push(x);
+            } else if (selectedGuessPin == 3) {
+                guess.push(null, x);
+            } else if (selectedGuessPin == 4) {
+                guess.push(null, null, x);
+            }
+        } else if (guess.length == 2) {
+            if (selectedGuessPin == 3) {
+                guess.push(x);
+            } else if (selectedGuessPin == 4) {
+                guess.push(null, x);
+            }
         } else {
-            guess.push(x);
-        }
-    } else if (guess.length == 1) {
-        if (selectedGuessPin == 2) {
-            guess.push(x);
-        } else if (selectedGuessPin == 3) {
-            guess.push(null, x);
-        } else if (selectedGuessPin == 4) {
-            guess.push(null, null, x);
-        }
-    } else if (guess.length == 2) {
-        if (selectedGuessPin == 3) {
-            guess.push(x);
-        } else if (selectedGuessPin == 4) {
-            guess.push(null, x);
+            guess.splice(index, 1, x);
         }
     } else {
+        let index = emptyPin - 1;
         guess.splice(index, 1, x);
     }
 }
