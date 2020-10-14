@@ -59,6 +59,8 @@ $(".selector_pin").click(function() {
         let color = guess[guess.length - 1];
         changePinColor(pinNum, color, "#guess");
         // console.log(guess);
+    } else {
+        feedback.text("Check your answer bij");
     }
 });
 
@@ -92,6 +94,7 @@ function checkWin() {
     answer.forEach((el, i) => {
         if (el == guess[i]) {
             feedback.text("Winner winner chicken bagel dinner");
+            
         } else {
             if (round == 10) {
                 feedback.text("Loser Schmooozer");
@@ -253,6 +256,3 @@ $("#instructions").click(function() {
       });
 })
 
-
-
-// INSTRUCTIONS POP UP
