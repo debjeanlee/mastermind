@@ -8,7 +8,7 @@ let white = 0;
 let round = 1;
 let results = [];
 let feedback = $(".feedback_container");
-
+let win;
 
 // // // sets random answer chosen by computer
 function setAnswer() {
@@ -59,8 +59,6 @@ $(".selector_pin").click(function() {
         let color = guess[guess.length - 1];
         changePinColor(pinNum, color, "#guess");
         // console.log(guess);
-    } else {
-        feedback.text("Check your answer bij");
     }
 });
 
@@ -94,6 +92,7 @@ function checkWin() {
     answer.forEach((el, i) => {
         if (el == guess[i]) {
             feedback.text("Winner winner chicken bagel dinner");
+            win = true;
         } else {
             if (round == 10) {
                 feedback.text("Loser Schmooozer");
@@ -101,10 +100,14 @@ function checkWin() {
                 feedback.text("Try again sucker");
                 guess = [];
             }
+            win = false;
         }
     })
-    round++;
+    // round++;
+    // console.log("round" + round);
+    return win;
 }
+
 
 // NEED FUNCTION TO CHANGE COLORS OF PINS ON BOARDS
 function changeRoundPins () {
@@ -148,19 +151,28 @@ $("#clear").click(function() {
     removeLastGuess();
 })
 
-
-// check button on click
-$("#check").click(function() {
+function check() {
     if (checkGuessLength() == true) {
         if (round < 11) {
             getGuessResults();
             changeRoundPins();
             changeBackToBlack();
             checkWin();
+            if (win == true) {
+                $("#check").off("click");
+            } else {
+                round++;
+            }
+            console.log("round" + round);
         } 
     } else {
         feedback.text("CHOOSE MORE PINS DUMBASS");
     }
+}
+
+// check button on click
+$("#check").click(function() {
+    check();
 })
 
 // function to assign result pins
@@ -221,6 +233,9 @@ $("#reset").click(function() {
     feedback.text("New game loaded");
     setAnswer();
     changeAllToBlack();
+    $("#check").click(function() {
+        check();
+    })    
 })
 
 function changeAllToBlack() {
@@ -255,3 +270,6 @@ $("#instructions").click(function() {
       });
 })
 
+
+
+// INSTRUCTIONS POP UP
