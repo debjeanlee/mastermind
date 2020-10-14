@@ -221,6 +221,9 @@ $("#reset").click(function() {
     round = 1;
     results = [];
     feedback.text("New game loaded");
+    win = undefined;
+    selectedGuessPin = undefined;
+    col_id = undefined;
     setAnswer();
     changeAllToBlack();
     $("#check").click(function() {
@@ -240,6 +243,10 @@ function changeAllToBlack() {
             let pin = $(`#ans${i} div:nth-child(${x})`);
             pin.css("background-color","rgb(238, 207, 172)");
         }
+    }
+    for (let i = 1; i < 5; i++) {
+        let pin = $(`#guess div:nth-child(${i})`);
+        pin.css("background-color","rgb(207, 187, 165)");
     }
 }
 
@@ -295,7 +302,9 @@ $(".selector_pin").click(function(event) {
         $(`#${col_id}`).css("background-color");
         changePinColor(pin, col_id, "#guess");
         updateGuess(pushToGuess);
-    } else {
+    } 
+    // ADD ANOTHER ELSE IF TO CHECK FOR BLANKS
+    else {
         if (guess.length < 4) {
             colorClicked(clickedId);
             let pinNum = guess.length;
@@ -340,6 +349,20 @@ function updateGuess(x) {
             guess.push(null, x, null, null);
         } else {
             guess.push(x);
+        }
+    } else if (guess.length == 1) {
+        if (selectedGuessPin == 2) {
+            guess.push(x);
+        } else if (selectedGuessPin == 3) {
+            guess.push(null, x);
+        } else if (selectedGuessPin == 4) {
+            guess.push(null, null, x);
+        }
+    } else if (guess.length == 2) {
+        if (selectedGuessPin == 3) {
+            guess.push(x);
+        } else if (selectedGuessPin == 4) {
+            guess.push(null, x);
         }
     } else {
         guess.splice(index, 1, x);
