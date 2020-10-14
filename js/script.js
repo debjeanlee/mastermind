@@ -56,22 +56,22 @@ setAnswer();
 // // // function to add clicked color to guess arr
 function colorClicked(id) {
     switch (id) {
-        case "s_red":
+        case "red":
             guess.push(0);
             break;
-        case "s_blue":
+        case "blue":
             guess.push(1);
             break;
-        case "s_green":
+        case "green":
             guess.push(2);
             break;
-        case "s_yellow":
+        case "yellow":
             guess.push(3);
             break;
-        case "s_purple":
+        case "purple":
             guess.push(4);
             break;
-        case "s_orange":
+        case "orange":
             guess.push(5);
             break;
     }
@@ -264,7 +264,7 @@ $("#instructions").click(function() {
 // // to store selected guess pin on click
 $("body").click(function(event) {
     selectedGuessPin = event.target.id;
-    console.log("seledtedguesspin: " + selectedGuessPin);
+    // console.log("seledtedguesspin: " + selectedGuessPin);
 })
 
 // // // function to select pin color guess
@@ -285,31 +285,63 @@ $("body").click(function(event) {
 $(".selector_pin").click(function(event) {
     let pin = selectedGuessPin;
     console.log("pin: " + pin);
-    console.log("thisid: " + this.id);
     let clickedId = this.id
-    console.log("clickedId: " + clickedId);
-    indexOfClickedColor(clickedId);
+    console.log("clickedId (this.id): " + clickedId);
+    let pushToGuess = indexOfClickedColor(clickedId);
     console.log("ID: " + col_id);
-    if (selectedGuessPin == "1" || selectedGuessPin == "2" || selectedGuessPin == "3" || selectedGuessPin == "4")
+
+    if (selectedGuessPin == "1" || selectedGuessPin == "2" || selectedGuessPin == "3" || selectedGuessPin == "4") {
         // need to get id of clicked color
         $(`#${col_id}`).css("background-color");
         changePinColor(pin, col_id, "#guess");
+        updateGuess(pushToGuess);
+    } else {
+        if (guess.length < 4) {
+            colorClicked(clickedId);
+            let pinNum = guess.length;
+            let color = guess[guess.length - 1];
+            changePinColor(pinNum, color, "#guess");
+            // console.log(guess);
+        } else {
+            feedback.text("Check your answer bij");
+        }
+    }
+    console.log("guess: " + guess);
 });
 
 
 function indexOfClickedColor(clickedId) {
     switch (clickedId) {
-        case "s_red":
+        case "red":
             return col_id = 0;
-        case "s_blue":
+        case "blue":
             return col_id = 1;
-        case "s_green":
+        case "green":
             return col_id = 2;
-        case "s_yellow":
+        case "yellow":
             return col_id = 3;
-        case "s_purple":
+        case "purple":
             return col_id = 4;
-        case "s_orange":
+        case "orange":
             return col_id = 5;
+    }
+}
+
+// UPDATE ARRAY
+function updateGuess(x) {
+    let index = selectedGuessPin - 1;
+    console.log("index: " + index);
+    if (guess.length == 0) {
+        if (selectedGuessPin == 4) {
+            guess.push(null, null, null, x);
+        } else if (selectedGuessPin == 3) {
+            guess.push(null, null, x, null);
+        } else if (selectedGuessPin == 2) {
+            guess.push(null, x, null, null);
+        } else {
+            guess.push(x);
+        }
+    } else {
+        guess.splice(index, 1, x);
     }
 }
