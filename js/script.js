@@ -18,9 +18,9 @@ function setAnswer() {
         // console.log(answer);
     }
 
-    // answer.forEach((el, i) => {
-    //     changePinColor(i+1, el, "#answer")
-    // })
+    answer.forEach((el, i) => {
+        changePinColor(i+1, el, "#answer")
+    })
 }
 
 // // //changes individual pin color with pin number, color index and selector
@@ -59,6 +59,8 @@ $(".selector_pin").click(function() {
         let color = guess[guess.length - 1];
         changePinColor(pinNum, color, "#guess");
         // console.log(guess);
+    } else {
+        feedback.text("Check your answer bij");
     }
 });
 
@@ -92,6 +94,7 @@ function checkWin() {
     answer.forEach((el, i) => {
         if (el == guess[i]) {
             feedback.text("Winner winner chicken bagel dinner");
+            $("#check").off("click");
         } else {
             if (round == 10) {
                 feedback.text("Loser Schmooozer");
@@ -134,8 +137,19 @@ function changeBackToBlack() {
     }
 }
 
-// check button on click
-$("#check").click(function() {
+// function to delete last item
+function removeLastGuess() {
+    guess.pop();
+    let x = guess.length;
+    let id = $(`#${x+1}`);
+    id.css("background-color", "rgb(207, 187, 165)");
+}
+
+$("#clear").click(function() {
+    removeLastGuess();
+})
+
+function roundFunc() {
     if (checkGuessLength() == true) {
         if (round < 11) {
             getGuessResults();
@@ -146,6 +160,12 @@ $("#check").click(function() {
     } else {
         feedback.text("CHOOSE MORE PINS DUMBASS");
     }
+}
+
+
+// check button on click
+$("#check").click(function() {
+    roundFunc();
 })
 
 // function to assign result pins
@@ -206,6 +226,9 @@ $("#reset").click(function() {
     feedback.text("New game loaded");
     setAnswer();
     changeAllToBlack();
+    $("#check").click(function() {
+        roundFunc();
+    });
 })
 
 function changeAllToBlack() {
@@ -228,16 +251,15 @@ function changeAllToBlack() {
 // //  uhhhh maybe later 
 // function to change pin color and array item in guess
 
-// function to delete last item
-function removeLastGuess() {
-    guess.pop();
-    let x = guess.length;
-    let id = $(`#s${x+1}`);
-    id.css("background-color", "rgb(207, 187, 165)");
-}
 
-$("#clear").click(function() {
-    removeLastGuess();
+$("#instructions").click(function() {
+    swal({
+        content: "text",
+        title: "Instructions",
+        text: "You have 10 turns. Black pins represent the correct colored pin, in the correct place. White pins mean you have the correct colored pin, in the wrong place.",
+        buttons: {
+            confirm : {text:"PLAY TIME", className:"sweet-hover "}
+        },
+      });
 })
 
-// INSTRUCTIONS POP UP
