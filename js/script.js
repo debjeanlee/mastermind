@@ -314,12 +314,6 @@ $(".selector_pin").click(function(event) {
             let color = guess[guess.length - 1];
             changePinColor(pinNum, color, "#guess");
             // console.log(guess);
-        } else if (guess.length == 4) {
-            guess.forEach(el => {
-                if (el != null) {
-                    feedback.text("Check your answer bij");
-                }
-            })
         } else {
         //    check where blank pin is
         // console.log("guess arr: " + guess);
