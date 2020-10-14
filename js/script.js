@@ -18,9 +18,9 @@ function setAnswer() {
         // console.log(answer);
     }
 
-    answer.forEach((el, i) => {
-        changePinColor(i+1, el, "#answer")
-    })
+    // answer.forEach((el, i) => {
+    //     changePinColor(i+1, el, "#answer")
+    // })
 }
 
 // // //changes individual pin color with pin number, color index and selector
@@ -163,7 +163,7 @@ function check() {
             } else {
                 round++;
             }
-            console.log("round" + round);
+            // console.log("round" + round);
         } 
     } else {
         feedback.text("CHOOSE MORE PINS DUMBASS");
