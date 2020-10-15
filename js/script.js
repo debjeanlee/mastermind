@@ -311,6 +311,10 @@ $(".selector_pin").click(function(event) {
     }
     // console.log(emptyPin);
     // console.log("guess: " + guess);
+    if (guess.length == 4) {
+        return emptyPin = null;
+    }
+
 });
 
 function findEmptyPin() {
