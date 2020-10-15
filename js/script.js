@@ -18,12 +18,7 @@ function setAnswer() {
     for (let x = 0; x < 4; x++) {
         let colorIndex = Math.floor(Math.random() * 6);
         answer.push(colorIndex);
-        // console.log(answer);
     }
-
-    // answer.forEach((el, i) => {
-    //     changePinColor(i+1, el, "#answer")
-    // })
 }
 
 // // //changes individual pin color with pin number, color index and selector
@@ -94,8 +89,6 @@ function checkWin() {
             win = false;
         }
     })
-    // round++;
-    // console.log("round" + round);
     return win;
 }
 
@@ -169,7 +162,6 @@ function check() {
             } else {
                 round++;
             }
-            // console.log("round" + round);
         } 
     } else {
         feedback.text("CHOOSE MORE PINS DUMBASS");
@@ -273,11 +265,6 @@ function changeAllToBlack() {
 }
 
 
-
-// //  uhhhh maybe later 
-// function to change pin color and array item in guess
-
-
 $("#instructions").click(function() {
     swal({
         content: "text",
@@ -293,19 +280,14 @@ $("#instructions").click(function() {
 // // to store selected guess pin on click
 $("body").click(function(event) {
     selectedGuessPin = event.target.id;
-    // console.log("seledtedguesspin: " + selectedGuessPin);
 })
 
 
 $(".selector_pin").click(function(event) {
     let pin = selectedGuessPin;
-    // console.log("pin: " + pin);
     let clickedId = this.id
-    // console.log("clickedId (this.id): " + clickedId);
     let pushToGuess = indexOfClickedColor(clickedId);
-    // console.log("ID: " + col_id);
-
-    // console.log("guess length: " + guess.length);
+   
 
     if (selectedGuessPin == "1" || selectedGuessPin == "2" || selectedGuessPin == "3" || selectedGuessPin == "4") {
         // need to get id of clicked color
@@ -320,18 +302,12 @@ $(".selector_pin").click(function(event) {
             let pinNum = guess.length;
             let color = guess[guess.length - 1];
             changePinColor(pinNum, color, "#guess");
-            // console.log(guess);
         } else {
-        //    check where blank pin is
-        // console.log("guess arr: " + guess);
-        // console.log("emptypin before: " + emptyPin);
         findEmptyPin();
         updateGuess(pushToGuess);
         changePinColor(emptyPin, col_id, "#guess");
         }
     }
-    // console.log(emptyPin);
-    // console.log("guess: " + guess);
     if (guess.length == 4) {
         return emptyPin = null;
     }
@@ -342,7 +318,6 @@ function findEmptyPin() {
     for (let i = 3; i > -1; i--) {
         if (guess[i] == null) {
             emptyPin = i+1;
-            // console.log("emptypin: " + emptyPin);
         }
     } return emptyPin;
 }
@@ -370,7 +345,6 @@ function indexOfClickedColor(clickedId) {
 function updateGuess(x) {
     if (selectedGuessPin == "1" || selectedGuessPin == "2" || selectedGuessPin == "3" || selectedGuessPin == "4") {
         let index = selectedGuessPin - 1;
-        // console.log("index: " + index);
         if (guess.length == 0) {
             if (selectedGuessPin == 4) {
                 guess.push(null, null, null, x);
