@@ -251,3 +251,29 @@ h4 {
           display: block;
       }
   }
+
+
+  @media screen and (min-width: 425px) and (max-width: 768px) {
+    h1 {
+        font-size: 50px;
+    }
+
+    h4 {
+        font-size: 25px;
+    }
+
+    .board {
+      margin-right: 8px;
+    }
+
+    .button {
+        width: 100px;
+        height: 50px;
+        border-radius: 18px;
+        font-size: 18px;
+    }
+
+    .gameplay {
+        display: block;
+    }
+}
