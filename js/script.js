@@ -378,3 +378,42 @@ function updateGuess(x) {
         guess.splice(index, 1, x);
     }
 }
+
+
+
+// accesses bg color of pin
+let redPin = document.getElementById("red");
+let redBgCol = window.getComputedStyle(redPin).getPropertyValue("background-color");
+
+let bluePin = document.getElementById("red");
+let blueBgCol = window.getComputedStyle(bluePin).getPropertyValue("background-color");
+
+
+redPin.addEventListener("dragstart", e => {
+    e.dataTransfer.setData("text", redBgCol);
+    console.log(e.target.id);
+    let red = e.target;
+    console.log(redBgCol);
+})
+
+let dropzone = document.querySelector(".dropzone");
+
+// for (const dropZone of document.querySelectorAll(".dropzone")) {
+    // when item is dragged over drop-zone
+    dropzone.addEventListener("dragenter", e => {
+        e.preventDefault();
+        // console.log(e);
+        dropzone.classList.add("dropzone--over");
+    });
+        // when item leaves drop-zone
+    dropzone.addEventListener("dragleave", e => {
+        e.preventDefault();
+        // console.log("dcode");
+        dropzone.classList.remove("dropzone--over");
+    });
+        
+    dropzone.addEventListener("ondrop", e => {
+        e.preventDefault();
+        console.log(e);
+    });
+// }

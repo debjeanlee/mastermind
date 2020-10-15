@@ -226,6 +226,10 @@ h4 {
       background-color:  #fdce69;
   }
 
+  .dropzone--over {
+      border: 5px solid rgba(255, 124, 124, 0.8);
+  }
+
 
   @media screen and (min-width: 320px) and (max-width: 375px) {
       h1 {
@@ -360,3 +364,4 @@ h4 {
         display: block;
     }
 }
+
