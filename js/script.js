@@ -314,7 +314,7 @@ $(".selector_pin").click(function(event) {
 });
 
 function findEmptyPin() {
-    for (let i = 3; i > 0; i--) {
+    for (let i = 3; i > -1; i--) {
         if (guess[i] == null) {
             emptyPin = i+1;
             // console.log("emptypin: " + emptyPin);
