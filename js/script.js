@@ -83,13 +83,6 @@ function checkWin() {
     answer.forEach((el, i) => {
         if (el == guess[i]) {
             feedback.text("Winner winner chicken bagel dinner");
-            answer.forEach((el, i) => {
-                    changePinColor(i+1, el, "#answer");
-                });
-            for (let i = 1; i < 5; i++) {
-                let ans = $(`#answer div:nth-child(${i})`);
-                ans.text("");
-            }
             win = true;
         } else {
             if (round == 10) {
@@ -158,6 +151,21 @@ function check() {
             checkWin();
             if (win == true) {
                 $("#check").off("click");
+                answer.forEach((el, i) => {
+                        changePinColor(i+1, el, "#answer");
+                    });
+                for (let i = 1; i < 5; i++) {
+                    let ans = $(`#answer div:nth-child(${i})`);
+                    ans.text("");
+                }
+            } else if (win == false && round == 10) {
+                answer.forEach((el, i) => {
+                    changePinColor(i+1, el, "#answer");
+                });
+                for (let i = 1; i < 5; i++) {
+                    let ans = $(`#answer div:nth-child(${i})`);
+                    ans.text("");
+                }
             } else {
                 round++;
             }
