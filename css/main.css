@@ -1,103 +1,265 @@
 * {
- box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'VT323', monospace;
-    text-align: center;
-    background-color: #fff9e8;
+  font-family: "VT323", monospace;
+  text-align: center;
+  background-color: #fff9e8;
 }
 
 header {
-    text-align: center;
-    margin-top: 50px;
+  text-align: center;
+  margin-top: 50px;
 }
 
 main {
-    display: grid;
-    grid-template-columns: 4fr 3fr;
+  display: grid;
+  grid-template-columns: 4fr 3fr;
 }
 
 h1 {
-    font-size: 300%;
-    line-height: 30%;
-    padding: 0 auto;
-    margin-bottom: 20px;
-    color: rgb(58, 53, 53);
+  font-size: 300%;
+  line-height: 30%;
+  padding: 0 auto;
+  margin-bottom: 20px;
+  color: rgb(58, 53, 53);
 }
 
 h4 {
-    line-height: 30%;
-    margin-top: 0;
-    font-size: 18px;
-    color: #93A8C0;
+  line-height: 30%;
+  margin-top: 0;
+  font-size: 18px;
+  color: #93a8c0;
 }
 
 .main_left {
-    /* border: 1px solid fuchsia; */
- display: flex;
- justify-content: flex-end;
- /* align-items: ; */
+  /* border: 1px solid fuchsia; */
+  display: flex;
+  justify-content: flex-end;
+  /* align-items: ; */
 }
 
 .main_right {
-    /* border: 1px solid fuchsia; */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
+  /* border: 1px solid fuchsia; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
 }
 .gameplay {
-    /* border: 1px solid pink; */
-    display: flex;
+  /* border: 1px solid pink; */
+  display: flex;
 }
 
 .feedback_container {
-    color: red;
-    height: 70px;
-    font-size: 20px;
-    padding-top: 20px;
-    padding-left: 20px;
+  color: red;
+  height: 70px;
+  font-size: 20px;
+  padding-top: 20px;
+  padding-left: 20px;
 }
 
 .board {
-    border: 5px solid #D7B791;
-    border-radius: 20px;
-    display: grid;
-    grid-template-columns: 6fr 2fr;
-    width: 300px;
-    margin-right: 20px;
-    background-color: #ecd6b9;
-    color: rgb(114, 114, 114);
+  border: 5px solid #d7b791;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 6fr 2fr;
+  width: 300px;
+  margin-right: 20px;
+  background-color: #ecd6b9;
+  color: rgb(114, 114, 114);
 }
 
 .left {
-    border-right: 2px solid#D7B791;
-    display: grid;
-    grid-template-rows: repeat(12, 1fr);
+  border-right: 2px solid#D7B791;
+  display: grid;
+  grid-template-rows: repeat(12, 1fr);
 }
 
 .pin_container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-content: space-around;
-    align-items: center;
-    padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
 }
 
-#guess10, #guess9, #guess8, #guess7, #guess6, #guess5, #guess4, #guess3, #guess2 {
-    border-bottom: 1px dashed #D7B791;
+#guess10,
+#guess9,
+#guess8,
+#guess7,
+#guess6,
+#guess5,
+#guess4,
+#guess3,
+#guess2 {
+  border-bottom: 1px dashed #d7b791;
 }
 
 #guess {
-    border-top: 3px solid #D7B791;
-    padding-top: 14px;
-    padding-bottom: 8px;
-    margin-top: 2px;
+  border-top: 3px solid #d7b791;
+  padding-top: 14px;
+  padding-bottom: 8px;
+  margin-top: 2px;
 }
 
-.big_pin, .guess_pin {
-    border: 3px solid  rgb(248, 248, 248);
+.big_pin,
+.guess_pin {
+  border: 3px solid rgb(248, 248, 248);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin: 0 auto;
+  padding: 0;
+  background-color: rgb(207, 187, 165);
+  line-height: 110%;
+}
+
+#answer {
+  border-bottom: 3px solid #d7b791;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  align-items: center;
+}
+
+#answer > .big_pin {
+  line-height: 135%;
+  background-color: rgb(192, 174, 150);
+  color: rgb(240, 230, 218);
+}
+
+.right {
+  /* border: 1px solid pink; */
+  display: grid;
+  grid-template-rows: repeat(12, 1fr);
+}
+
+.ans_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 auto;
+  margin-top: 2px;
+}
+
+#ans10,
+#ans9,
+#ans8,
+#ans7,
+#ans6,
+#ans5,
+#ans4,
+#ans3,
+#ans2,
+#none {
+  border-bottom: 1px dashed #d7b791;
+}
+
+.small_pin {
+  border: 3px solid rgb(248, 248, 248);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 0 auto;
+  line-height: 0;
+  font-size: 15px;
+  background-color: rgb(238, 207, 172);
+}
+
+#color_select {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  border-top: 3px solid #d7b791;
+}
+
+.selector_pin {
+  border: 2px solid rgb(248, 248, 248);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  margin: 1px auto;
+  font-size: 20px;
+  line-height: 20%;
+  background-color: rgb(184, 161, 134);
+}
+#red {
+  background-color: #ff8097;
+}
+
+#blue {
+  background-color: #92d6e2;
+}
+
+#green {
+  background-color: #9fec98;
+}
+
+#yellow {
+  background-color: #ffe992;
+}
+
+#orange {
+  background-color: #ffc59e;
+}
+
+#purple {
+  background-color: #b4a1e2;
+}
+
+.button {
+  border: 4px solid rgb(231, 231, 231);
+  display: flex;
+  border-radius: 10px;
+  width: 150px;
+  height: 50px;
+  margin: 5px;
+  font-size: 28px;
+  padding: 2px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(197, 197, 197);
+  color: rgb(255, 255, 255);
+}
+
+.swal-overlay {
+  background-color: rgba(158, 139, 114, 0.45);
+}
+
+.swal-button {
+  padding: 7px 19px;
+  border-radius: 2px;
+  background-color: #e6c174;
+  font-size: 12px;
+  border: 1px solid #fae9c8;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+}
+
+.sweet-hover:not([disabled]):hover {
+  background-color: #fdce69;
+}
+
+@media screen and (min-width: 320px) and (max-width: 375px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  h4 {
+    font-size: 12px;
+  }
+
+  .board {
+    width: 240px;
+    margin-right: 2px;
+    /* height: 550px; */
+  }
+
+  .big_pin,
+  .guess_pin {
+    border: 2px solid rgb(248, 248, 248);
     width: 25px;
     height: 25px;
     border-radius: 50%;
@@ -105,258 +267,121 @@ h4 {
     padding: 0;
     background-color: rgb(207, 187, 165);
     line-height: 110%;
-}
-
-#answer {
-    border-bottom: 3px solid #D7B791;
-    margin-top: 10px;
-    padding-bottom: 10px;
-    text-align: center;
-    align-items: center;
-}
-
-#answer > .big_pin {
-    line-height: 135%;
-    background-color: rgb(192, 174, 150);
-    color: rgb(240, 230, 218);
-}
-
-.right {
-    /* border: 1px solid pink; */
-    display: grid;
-    grid-template-rows: repeat(12, 1fr);
-}
-
-.ans_container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0 auto;
-    margin-top: 2px;
-}
-
-#ans10, #ans9, #ans8, #ans7, #ans6, #ans5, #ans4, #ans3, #ans2, #none {
-    border-bottom: 1px dashed #D7B791;
-}
-
-.small_pin {
-    border: 3px solid rgb(248, 248, 248);
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin: 0 auto;
-    line-height: 0;
-    font-size: 15px;
-    background-color: rgb(238, 207, 172);
-}
-
-#color_select {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    border-top: 3px solid #D7B791;
-}
-
-.selector_pin {
-    border: 2px solid rgb(248, 248, 248);
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    margin: 1px auto;
-    font-size: 20px;
-    line-height: 20%;
-    background-color: rgb(184, 161, 134);
-}
-#red {
-    background-color: #ff8097;
-}
-
-#blue {
-    background-color: #92d6e2;
-}
-
-#green {
-    background-color: #9fec98;
-}
-
-#yellow {
-    background-color: #ffe992;
-}
-
-#orange {
-    background-color: #ffc59e;
-}
-
-#purple {
-    background-color: #b4a1e2;
-}
-
-.button {
-    border: 4px solid rgb(231, 231, 231);
-    display: flex;
-    border-radius: 10px;
-    width: 150px;
-    height: 50px;
-    margin: 5px;
-    font-size: 28px;
-    padding: 2px;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(197, 197, 197);
-    color: rgb(255, 255, 255);
-}
-
-
-.swal-overlay {
-    background-color: rgba(158, 139, 114, 0.45);
-  }
-
-  .swal-button {
-    padding: 7px 19px;
-    border-radius: 2px;
-    background-color: #e6c174;
-    font-size: 12px;
-    border: 1px solid #fae9c8;
-    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
-    
-  }
-
-  .sweet-hover:not([disabled]):hover {
-      background-color:  #fdce69;
-  }
-
-
-  @media screen and (min-width: 320px) and (max-width: 375px) {
-      h1 {
-          font-size: 30px;
-      }
-
-      h4 {
-          font-size: 12px;
-      }
-
-      .board {
-        width: 240px;
-        margin-right: 2px;
-        /* height: 550px; */
-      }
-
-      .big_pin, .guess_pin {
-        border: 2px solid  rgb(248, 248, 248);
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        margin: 0 auto;
-        padding: 0;
-        background-color: rgb(207, 187, 165);
-        line-height: 110%;
-    }
-
-    .selector_pin {
-        border: 2px solid rgb(248, 248, 248);
-        width: 15px;
-        height: 15px;
-        border-radius: 50%;
-        margin: 2px auto;
-        font-size: 20px;
-        line-height: 20%;
-        background-color: rgb(184, 161, 134);
-    }
-
-    .pin_container {
-        margin: 0px;
-    }
-
-      .button {
-          width: 60px;
-          height: 30px;
-          border-radius: 10px;
-          font-size: 10px;
-          border: 2px solid rgb(231, 231, 231);
-      }
-
-      .gameplay {
-          display: block;
-      }
-  }
-
-  @media screen and (min-width: 375px) and (max-width: 425px) {
-    h1 {
-        font-size: 30px;
-    }
-
-    h4 {
-        font-size: 12px;
-    }
-
-    .board {
-      width: 280px;
-      margin-right: 2px;
-      /* height: 550px; */
-    }
-
-    .big_pin, .guess_pin {
-      border: 2px solid  rgb(248, 248, 248);
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-      margin: 0 auto;
-      padding: 0;
-      background-color: rgb(207, 187, 165);
-      line-height: 110%;
   }
 
   .selector_pin {
-      border: 2px solid rgb(248, 248, 248);
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      margin: 2px auto;
-      font-size: 20px;
-      line-height: 20%;
-      background-color: rgb(184, 161, 134);
+    border: 2px solid rgb(248, 248, 248);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin: 2px auto;
+    font-size: 20px;
+    line-height: 20%;
+    background-color: rgb(184, 161, 134);
   }
 
   .pin_container {
-      margin: 0px;
+    margin: 0px;
   }
 
-    .button {
-        width: 70px;
-        height: 40px;
-        border-radius: 10px;
-        font-size: 12px;
-        border: 2px solid rgb(231, 231, 231);
-    }
+  .button {
+    width: 60px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 10px;
+    border: 2px solid rgb(231, 231, 231);
+  }
 
-    .gameplay {
-        display: block;
-    }
+  .gameplay {
+    display: block;
+  }
 }
 
+@media screen and (min-width: 375px) and (max-width: 425px) {
+  h1 {
+    font-size: 30px;
+  }
 
-  @media screen and (min-width: 425px) and (max-width: 768px) {
-    h1 {
-        font-size: 50px;
-    }
+  h4 {
+    font-size: 12px;
+  }
 
-    h4 {
-        font-size: 25px;
-    }
+  .board {
+    width: 280px;
+    margin-right: 2px;
+    /* height: 550px; */
+  }
 
-    .board {
-      margin-right: 8px;
-    }
+  .big_pin,
+  .guess_pin {
+    border: 2px solid rgb(248, 248, 248);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin: 0 auto;
+    padding: 0;
+    background-color: rgb(207, 187, 165);
+    line-height: 110%;
+  }
 
-    .button {
-        width: 100px;
-        height: 50px;
-        border-radius: 18px;
-        font-size: 18px;
-    }
+  .selector_pin {
+    border: 2px solid rgb(248, 248, 248);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin: 2px auto;
+    font-size: 20px;
+    line-height: 20%;
+    background-color: rgb(184, 161, 134);
+  }
 
-    .gameplay {
-        display: block;
-    }
+  .pin_container {
+    margin: 0px;
+  }
+
+  .button {
+    width: 70px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 12px;
+    border: 2px solid rgb(231, 231, 231);
+  }
+
+  .gameplay {
+    display: block;
+  }
+  .feedback_container {
+    padding: 20px 10px 5px 10px;
+    font-size: 12px;
+    height: 100px;
+  }
+}
+
+@media screen and (min-width: 425px) and (max-width: 768px) {
+  h1 {
+    font-size: 50px;
+  }
+
+  h4 {
+    font-size: 25px;
+  }
+
+  .board {
+    margin-right: 8px;
+  }
+
+  .button {
+    width: 100px;
+    height: 50px;
+    border-radius: 18px;
+    font-size: 18px;
+  }
+
+  .gameplay {
+    display: block;
+  }
+
+  .feedback_container {
+    font-size: 12px;
+  }
 }
